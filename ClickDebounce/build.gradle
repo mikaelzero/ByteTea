@@ -1,0 +1,13 @@
+apply plugin: 'java-library'
+apply from: '../gradle/plugin.gradle'
+
+uploadArchives{
+    repositories.mavenDeployer{
+        repository(url: uri("${rootProject.projectDir}/maven"))
+        pom.groupId = "net.mikaelzero.bytetea"
+        pom.artifactId = "click-debounce-plugin"
+        pom.version = "1.0.0"
+    }
+}
+
+apply from: 'bintray.gradle'

@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'bytex'
+apply plugin: 'bytetea.click_debounce'
+apply plugin: 'bytetea.encrypt_string'
+
+ByteX {
+    enable true
+    enableInDebug true
+    logLevel "DEBUG"
+}
+
+encrypt_string {
+    enable true
+    enableInDebug true
+    encryptPackages = [
+            "net.mikaelzero.app"
+    ]
+}
+
+click_debounce {
+    enable true
+    enableInDebug true
+    time = 700
+}
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "net.mikaelzero.app"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+//    implementation project(path: ':ClickDebounceLib')
+//    implementation project(path: ':EncryptStringLib')
+    implementation 'net.mikaelzero.bytetea:encrypt-string-lib:0.0.1'
+    implementation 'net.mikaelzero.bytetea:click-debounce-lib:0.0.1'
+
+}

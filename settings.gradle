@@ -1,0 +1,6 @@
+include ':EncryptStringLib'
+include ':ClickDebounceLib'
+include ':EncryptString'
+include ':ClickDebounce'
+include ':app'
+rootProject.name = "ByteAiwo"
