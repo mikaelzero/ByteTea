@@ -15,6 +15,8 @@ allprojects {
 
 classpath "com.bytedance.android.byteX:base-plugin:0.1.6"
 classpath "net.mikaelzero.bytetea:click-debounce-plugin:0.0.1"
+
+
 implementation 'net.mikaelzero.bytetea:click-debounce-lib:0.0.1'
 
 
