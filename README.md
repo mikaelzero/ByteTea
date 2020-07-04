@@ -13,12 +13,13 @@ repositories {
 
  dependencies {
         classpath "com.bytedance.android.byteX:base-plugin:0.1.6"
+     }
 
 ```
 
 
 ## Plugins
 
-[ClickDebounce]() (handle Android's click debounce, specially a quick double click.)
+[ClickDebounce](https://github.com/MikaelZero/ByteTea/blob/master/ClickDebounce/README.md) (handle Android's click debounce, specially a quick double click.)
 
-[EncryptString]() (encrypt string value in your app)
+[EncryptString](https://github.com/MikaelZero/ByteTea/blob/master/EncryptString/README.md) (encrypt string value in your app)
