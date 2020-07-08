@@ -13,8 +13,8 @@ allprojects {
     }
 }
 
-classpath "com.bytedance.android.byteX:base-plugin:0.1.6"
-classpath "net.mikaelzero.bytetea:encrypt-string-plugin:0.0.1"
+classpath "com.bytedance.android.byteX:base-plugin:0.1.7"
+classpath "net.mikaelzero.bytetea:encrypt-string-plugin:0.0.2"
 
 
 apply plugin: 'bytex'

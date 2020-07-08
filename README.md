@@ -12,7 +12,7 @@ repositories {
     }
 
  dependencies {
-        classpath "com.bytedance.android.byteX:base-plugin:0.1.6"
+        classpath "com.bytedance.android.byteX:base-plugin:0.1.7"
      }
 
 ```
