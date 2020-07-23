@@ -7,7 +7,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.mikaelzero.bytetea.lib.clickdebounce.DebouncedWarp;
 import net.mikaelzero.bytetea.lib.encryptstr.EncryptIgnore;
 
 /**
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView testTv = findViewById(R.id.testTv);
-        testTv.setText("" + DebouncedWarp.FROZEN_WINDOW_MILLIS);
         testTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

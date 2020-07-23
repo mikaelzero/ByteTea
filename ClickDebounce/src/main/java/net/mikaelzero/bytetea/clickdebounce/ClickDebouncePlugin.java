@@ -8,6 +8,7 @@ import net.mikaelzero.bytetea.clickdebounce.visitor.FindClickClassVisitor;
 import net.mikaelzero.bytetea.clickdebounce.visitor.TimeClassVisitor;
 
 import org.gradle.api.Project;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
@@ -25,5 +26,11 @@ public class ClickDebouncePlugin extends CommonPlugin<ClickDebounceExtension, Co
             chain.connect(new FindClickClassVisitor());
         }
         return super.transform(relativePath, chain);
+    }
+
+    @Override
+    protected void onApply(@Nonnull @NotNull Project project) {
+        super.onApply(project);
+        project.getDependencies().add("implementation","net.mikaelzero.bytetea:click-debounce-lib:0.0.3");
     }
 }

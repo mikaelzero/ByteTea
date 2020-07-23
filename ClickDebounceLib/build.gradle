@@ -8,18 +8,6 @@ android {
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -27,6 +15,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -45,12 +36,19 @@ repositories {
     mavenCentral()
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 apply plugin: 'com.novoda.bintray-release'
 publish {
     userOrg = "mikaelzero"
     groupId = "net.mikaelzero.bytetea"
     artifactId = "click-debounce-lib"
-    publishVersion = "0.0.1"
+    publishVersion = "${bytetea_version}"
     desc = "ByteTea"
     website = "https://github.com/MikaelZero/ByteTea"
+    bintrayUser = properties.getProperty("bintray.user")
+    bintrayKey = properties.getProperty("bintray.apikey")
 }
+
+//./gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false

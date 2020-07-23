@@ -16,7 +16,11 @@ class EncryptStringPlugin : CommonPlugin<EncryptStringExtension, Context>() {
     val methodName = "decode"
 
 
-    override fun getContext(project: Project, android: AppExtension, extension: EncryptStringExtension): Context {
+    override fun getContext(
+        project: Project,
+        android: AppExtension,
+        extension: EncryptStringExtension
+    ): Context {
         return Context(project, android, extension)
     }
 
@@ -55,13 +59,21 @@ class EncryptStringPlugin : CommonPlugin<EncryptStringExtension, Context>() {
             if (method.name == "<clinit>" && method.desc == "()V") {
                 clinitExist = true
             }
-            method.instructions.iterator().asIterable().filterIsInstance(LdcInsnNode::class.java).filter {
-                it.cst is String
-            }.forEach {
+            method.instructions.iterator().asIterable().filterIsInstance(LdcInsnNode::class.java)
+                .filter {
+                    it.cst is String
+                }.forEach {
                 val str = Base64.encodeBase64String((it.cst as String).toByteArray())
                 val il = InsnList()
                 il.add(LdcInsnNode(str))
-                il.add(MethodInsnNode(Opcodes.INVOKESTATIC, className, methodName, "(Ljava/lang/String;)Ljava/lang/String;"))
+                il.add(
+                    MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        className,
+                        methodName,
+                        "(Ljava/lang/String;)Ljava/lang/String;"
+                    )
+                )
                 method.instructions.insertBefore(it, il)
                 method.instructions.remove(it)
             }
@@ -80,8 +92,22 @@ class EncryptStringPlugin : CommonPlugin<EncryptStringExtension, Context>() {
                     val str = Base64.encodeBase64String((fieldNode.value as String).toByteArray())
                     val il = InsnList()
                     il.add(LdcInsnNode(str))
-                    il.add(MethodInsnNode(Opcodes.INVOKESTATIC, className, methodName, "(Ljava/lang/String;)Ljava/lang/String;"))
-                    il.add(FieldInsnNode(Opcodes.PUTSTATIC, node.name, fieldNode.name, "Ljava/lang/String;"))
+                    il.add(
+                        MethodInsnNode(
+                            Opcodes.INVOKESTATIC,
+                            className,
+                            methodName,
+                            "(Ljava/lang/String;)Ljava/lang/String;"
+                        )
+                    )
+                    il.add(
+                        FieldInsnNode(
+                            Opcodes.PUTSTATIC,
+                            node.name,
+                            fieldNode.name,
+                            "Ljava/lang/String;"
+                        )
+                    )
                     // 如果存在clinit函数则需要将代码插入到最前面
                     // 不能出现在static块中 非static变量或常量 之后
                     if (clinitExist) {
@@ -114,5 +140,13 @@ class EncryptStringPlugin : CommonPlugin<EncryptStringExtension, Context>() {
         return this.iterator().asIterable().filter {
             it.opcode in opcodes
         }.toList()
+    }
+
+    override fun onApply(project: Project) {
+        super.onApply(project)
+        project.dependencies.add(
+            "implementation",
+            "net.mikaelzero.bytetea:encrypt-string-lib:0.0.3"
+        )
     }
 }

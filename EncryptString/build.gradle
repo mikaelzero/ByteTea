@@ -6,7 +6,7 @@ uploadArchives {
         repository(url: uri("${rootProject.projectDir}/maven"))
         pom.groupId = "net.mikaelzero.bytetea"
         pom.artifactId = "encrypt-string-plugin"
-        pom.version = "1.0.0"
+        pom.version = "${bytetea_version}"
     }
 }
 apply from: 'bintray.gradle'

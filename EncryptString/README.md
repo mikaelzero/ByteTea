@@ -7,21 +7,12 @@ encrypt string value in your app
 ## Usage
 
 ```gradle
-allprojects {
-    repositories {
-        maven { url 'https://dl.bintray.com/mikaelzero/maven'}
-    }
-}
 
-classpath "com.bytedance.android.byteX:base-plugin:0.1.7"
-classpath "net.mikaelzero.bytetea:encrypt-string-plugin:0.0.2"
+classpath "net.mikaelzero.bytetea:encrypt-string-plugin:byteTeaVersion"
 
 
 apply plugin: 'bytex'
 apply plugin: 'bytetea.encrypt_string'
-
-
-implementation 'net.mikaelzero.bytetea:encrypt-string-lib:0.0.1'
 
 encrypt_string {
     enable true

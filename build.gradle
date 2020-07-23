@@ -3,6 +3,7 @@ buildscript {
     ext.kotlin_version = "1.3.72"
     ext.plugin_version = "0.1.7"
     ext.gradle_version = '3.5.1'
+    ext.bytetea_version = '0.0.3'
     repositories {
 //        maven { url uri("${rootProject.projectDir}/maven") }
         maven { url 'https://dl.bintray.com/mikaelzero/maven'}
@@ -20,8 +21,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         classpath "com.bytedance.android.byteX:base-plugin:${plugin_version}"
-        classpath "net.mikaelzero.bytetea:click-debounce-plugin:0.0.1"
-        classpath "net.mikaelzero.bytetea:encrypt-string-plugin:0.0.1"
+        classpath "net.mikaelzero.bytetea:click-debounce-plugin:$bytetea_version"
+        classpath "net.mikaelzero.bytetea:encrypt-string-plugin:$bytetea_version"
     }
 }
 

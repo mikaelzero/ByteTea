@@ -5,6 +5,7 @@
 develop base on [ByteX](https://github.com/bytedance/ByteX)
 
 ## Usage
+byteTeaVersion: 0.0.3
 
 ```gradle
 repositories {

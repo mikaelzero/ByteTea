@@ -7,20 +7,12 @@ handle Android's click debounce, specially a quick double click.
 ## Usage
 
 ```gradle
-allprojects {
-    repositories {
-        maven { url 'https://dl.bintray.com/mikaelzero/maven'}
-    }
-}
 
-classpath "com.bytedance.android.byteX:base-plugin:0.1.7"
-classpath "net.mikaelzero.bytetea:click-debounce-plugin:0.0.2"
+classpath "net.mikaelzero.bytetea:click-debounce-plugin:$byteTeaVersion"
 
 
 apply plugin: 'bytex'
 apply plugin: 'bytetea.click_debounce'
-
-implementation 'net.mikaelzero.bytetea:click-debounce-lib:0.0.1'
 
 
 click_debounce {
