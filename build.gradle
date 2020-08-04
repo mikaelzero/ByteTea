@@ -3,14 +3,16 @@ buildscript {
     ext.kotlin_version = "1.3.72"
     ext.plugin_version = "0.1.7"
     ext.gradle_version = '3.5.1'
-    ext.bytetea_version = '0.0.3'
+    ext.bytetea_version = '0.0.5'
+    ext.bytetea_version_local = '0.0.3'
     repositories {
-//        maven { url uri("${rootProject.projectDir}/maven") }
+        maven { url uri("${rootProject.projectDir}/maven") }
         maven { url 'https://dl.bintray.com/mikaelzero/maven'}
         mavenCentral()
         mavenLocal()
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${gradle_version}"
@@ -21,8 +23,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         classpath "com.bytedance.android.byteX:base-plugin:${plugin_version}"
-        classpath "net.mikaelzero.bytetea:click-debounce-plugin:$bytetea_version"
-        classpath "net.mikaelzero.bytetea:encrypt-string-plugin:$bytetea_version"
+        classpath "net.mikaelzero.bytetea:click-debounce-plugin:$bytetea_version_local"
+        classpath "net.mikaelzero.bytetea:encrypt-string-plugin:$bytetea_version_local"
     }
 }
 
@@ -32,7 +34,7 @@ allprojects {
         mavenLocal()
         google()
         jcenter()
-
+        maven { url 'https://jitpack.io' }
     }
 }
 

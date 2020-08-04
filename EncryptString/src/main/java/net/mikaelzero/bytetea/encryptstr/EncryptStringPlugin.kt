@@ -144,9 +144,6 @@ class EncryptStringPlugin : CommonPlugin<EncryptStringExtension, Context>() {
 
     override fun onApply(project: Project) {
         super.onApply(project)
-        project.dependencies.add(
-            "implementation",
-            "net.mikaelzero.bytetea:encrypt-string-lib:0.0.3"
-        )
+        project.dependencies.add("implementation", "net.mikaelzero.bytetea:encrypt-string-lib:0.0.5")
     }
 }
