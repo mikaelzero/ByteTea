@@ -1,3 +1,2 @@
 apply plugin: 'java-library'
 apply from: '../gradle/plugin.gradle'
-apply from: '../gradle/bintray.gradle'

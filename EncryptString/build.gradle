@@ -1,12 +1,3 @@
 apply plugin: 'java-library'
 apply from: '../gradle/plugin.gradle'
-
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: uri("${rootProject.projectDir}/maven"))
-        pom.groupId = "net.mikaelzero.bytetea"
-        pom.artifactId = "encrypt-string-plugin"
-        pom.version = "${bytetea_version}"
-    }
-}
-apply from: 'bintray.gradle'
+apply from: '../gradle/bintray.gradle'

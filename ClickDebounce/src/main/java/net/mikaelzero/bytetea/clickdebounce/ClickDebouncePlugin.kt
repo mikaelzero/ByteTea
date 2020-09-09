@@ -26,6 +26,6 @@ class ClickDebouncePlugin : CommonPlugin<ClickDebounceExtension?, Context>() {
 
     override fun onApply(@Nonnull project: Project) {
         super.onApply(project)
-        project.dependencies.add("implementation", "net.mikaelzero.bytetea:click-debounce-lib:0.0.5")
+        project.dependencies.add("implementation", "net.mikaelzero.bytetea:click-debounce-lib:1.0")
     }
 }

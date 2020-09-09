@@ -5,7 +5,7 @@
 develop base on [ByteX](https://github.com/bytedance/ByteX)
 
 ## Usage
-byteTeaVersion: 0.0.5
+byteTeaVersion: 1.5
 
 ```gradle
 repositories {
@@ -13,7 +13,7 @@ repositories {
     }
 
  dependencies {
-        classpath "com.bytedance.android.byteX:base-plugin:0.1.7"
+        classpath "com.bytedance.android.byteX:base-plugin:0.1.8"
      }
 
 ```

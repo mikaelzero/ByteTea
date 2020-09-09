@@ -1,12 +1,23 @@
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
-apply plugin: 'java'
 apply plugin: 'signing'
 apply plugin: 'maven'
 
-group = "net.mikaelzero.bytetea"
+Properties groupProperties = new Properties()
+groupProperties.load(project.file('gradle.properties').newDataInputStream())
+
+group = groupProperties.getProperty("ARTIFACT_GROUP")
 version = "${bytetea_version}"
-project.archivesBaseName = "encrypt-string-plugin"
+project.archivesBaseName = groupProperties.getProperty("ARTIFACT_NAME")
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri("${rootProject.projectDir}/maven"))
+        pom.groupId = groupProperties.getProperty("ARTIFACT_GROUP")
+        pom.artifactId = groupProperties.getProperty("ARTIFACT_NAME")
+        pom.version = "${bytetea_version}"
+    }
+}
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
@@ -51,9 +62,9 @@ if (project.ext.pomFile.exists()) {
 }
 
 def getSignatureFiles = {
-    def allFiles = project.tasks.signJars.signatureFiles.collect{it}
-    def signedSources = allFiles.find{ it.name.contains('-sources') }
-    def signedJavadoc = allFiles.find{ it.name.contains('-javadoc') }
+    def allFiles = project.tasks.signJars.signatureFiles.collect { it }
+    def signedSources = allFiles.find { it.name.contains('-sources') }
+    def signedJavadoc = allFiles.find { it.name.contains('-javadoc') }
     def signedJar = (allFiles - [signedSources, signJars])[0]
     return [
             [archive: signedSources, classifier: 'sources', extension: 'jar.asc'],
@@ -63,7 +74,7 @@ def getSignatureFiles = {
 }
 
 def getPomSignature = {
-    return project.tasks.signPom.signatureFiles.collect{ it }[0]
+    return project.tasks.signPom.signatureFiles.collect { it }[0]
 }
 
 def siteUrl = 'https://github.com/MikaelZero/ByteTea'
@@ -111,8 +122,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "encrypt-string-plugin"
-        desc = 'encrypt-string-plugin'
+        name = groupProperties.getProperty("ARTIFACT_NAME")
+        desc = groupProperties.getProperty("ARTIFACT_NAME")
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         issueTrackerUrl = issueUrl

@@ -29,7 +29,7 @@ public class Test {
     static {
         null_static_final = "test_null_static_final";
         null_static = "test_null_static";
-        Log.i("stringfog", "test static block");
+        Log.i("encryptString", "test static block");
     }
 
 }

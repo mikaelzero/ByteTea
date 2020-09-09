@@ -14,15 +14,14 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.mikaelzero.bytetea.lib.clickdebounce.DebouncedWarp;
-import net.mikaelzero.bytetea.lib.encryptstr.EncryptIgnore;
+//import net.mikaelzero.bytetea.lib.encryptstr.EncryptIgnore;
 
 /**
  * @Author: MikaelZero
  * @CreateDate: 2020/6/30 2:04 PM
  * @Description:
  */
-@EncryptIgnore
+//@EncryptIgnore
 public class MainActivity extends AppCompatActivity {
     String name = "HELLO WORLD";
     int num;
